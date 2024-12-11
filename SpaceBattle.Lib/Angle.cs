@@ -26,19 +26,12 @@ public class Angle
         return new Angle(new_num, a1.Denominator);
     }
 
-    public double Sin()
+    public double ToDouble() 
     {
         double n = numerator;
         double d = denominator;
-        return Math.Sin(n / d * Math.PI * 2);
-    }
-
-    public double Cos()
-    {
-        double n = numerator;
-        double d = denominator;
-        return Math.Cos(n / d * Math.PI * 2);
-    }
+        return n / d * Math.PI * 2;
+    } 
 
     public static bool operator ==(Angle a1, Angle a2)
     {
