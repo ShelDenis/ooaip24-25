@@ -28,12 +28,12 @@ public class Angle
         return new Angle(new_num, a1.Denominator);
     }
 
-    public double ToDouble() 
+    public double ToDouble()
     {
         double n = numerator;
         double d = denominator;
-        return n / d * Math.PI * 2;
-    } 
+        return Math.PI * 2 * n / d;
+    }
 
     public static bool operator ==(Angle a1, Angle a2)
     {

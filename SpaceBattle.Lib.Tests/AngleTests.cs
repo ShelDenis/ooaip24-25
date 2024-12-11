@@ -90,8 +90,8 @@ public class AngleTests
     [Fact]
     public void Execute_ToDouble()
     {
-        Angle angle1 = new Angle(2, 8);
-        Assert.Equal(Math.PI / 2, angle1.ToDouble());
+        Angle angle1 = new Angle(4, 8);
+        Assert.Equal(Math.PI, angle1.ToDouble());
     }
 
 }
