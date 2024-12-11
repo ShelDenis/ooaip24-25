@@ -1,11 +1,5 @@
 ﻿namespace SpaceBattle.Lib;
 
-public interface IMoving
-{
-    Vector Position { get; set; }
-    Vector Velocity { get; }
-}
-
 public class MoveCommand : ICommand
 {
     private readonly IMoving obj;
