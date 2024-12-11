@@ -29,11 +29,7 @@ public class MCommandTests
         ICommand[] lst = [cmd1.Object, cmd2.Object, cmd3.Object];
 
         var mc = new MCommand(lst);
-        // mc.Execute();
 
-        // Assert.Throws<Exception>(() => cmd2.Object.Execute());
-        Assert.Throws<Exception>(() => cmd2.Object.Execute());
-        // cmd1.Verify(x => x.Execute());
-        // cmd3.Verify(x => x.Execute());
+        Assert.Throws<Exception>(() => mc.Execute());
     }
 }
