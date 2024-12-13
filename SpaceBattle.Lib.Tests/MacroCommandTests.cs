@@ -31,5 +31,8 @@ public class MCommandTests
         var mc = new MCommand(lst);
 
         Assert.Throws<Exception>(() => mc.Execute());
+        cmd1.Verify(c => c.Execute(), Times.Once);
+        cmd2.Verify(c => c.Execute(), Times.Once);
+        cmd3.Verify(c => c.Execute(), Times.Never);
     }
 }
