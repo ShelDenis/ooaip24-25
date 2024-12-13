@@ -8,7 +8,7 @@ namespace SpaceBattle.Lib;
 public class SendCommandRegisterTest
 {
     [Fact]
-    public void ExecuteTest() 
+    public void ExecuteTest()
     {
         new InitCommand().Execute();
         var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
