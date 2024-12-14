@@ -33,4 +33,25 @@ public class CreateMacroCommandStrategyTests
         mockTest2.Verify(x => x.Execute());
 
     }
+
+    [Fact]
+    public void UnsuccessfulConstructionMacroCommand()
+    {
+        new InitCommand().Execute();
+        var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
+        Ioc.Resolve<App.ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
+
+        List<string> MacroTestDependencies = ["Commands.Test1", "Commands.Test2"];
+
+        Ioc.Resolve<App.ICommand>("IoC.Register", "Specs.Macro.Test", (object[] args) => MacroTestDependencies).Execute();
+
+        var registerMc = new RegisterIoCDependencyMacroCommand();
+        registerMc.Execute();
+
+        var CreateMacro = new CreateMacroCommandStrategy("Macro.Test");
+
+        
+         Assert.Throws<Exception>(() => CreateMacro.Resolve(new object[0]));
+
+    }
 }
