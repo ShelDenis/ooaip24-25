@@ -1,7 +1,7 @@
 using App;
 namespace SpaceBattle.Lib;
 
-public class RegisterIoCDependencyMacroCommand: ICommand 
+public class RegisterIoCDependencyMacroCommand : ICommand
 {
     public void Execute()
     {

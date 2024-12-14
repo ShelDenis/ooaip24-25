@@ -7,7 +7,7 @@ namespace SpaceBattle.Lib;
 public class MCRegisterTests
 {
     [Fact]
-    public void TestExecute() 
+    public void TestExecute()
     {
         new InitCommand().Execute();
         var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
