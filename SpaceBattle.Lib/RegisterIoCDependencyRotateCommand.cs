@@ -1,7 +1,7 @@
 using App;
 namespace SpaceBattle.Lib;
 
-public class RegisterIoCDependencyRotateCommand: ICommand
+public class RegisterIoCDependencyRotateCommand : ICommand
 {
     public void Execute()
     {
