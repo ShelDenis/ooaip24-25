@@ -6,13 +6,15 @@ namespace SpaceBattle.Lib.Tests;
 
 public class CreateMacroCommandStrategyTests
 {
-    [Fact]
-    public void SuccessfulConstructionMacroCommand()
-    {
+    public CreateMacroCommandStrategyTests() {
         new InitCommand().Execute();
         var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
         Ioc.Resolve<App.ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
+    }
 
+    [Fact]
+    public void SuccessfulConstructionMacroCommand()
+    {
         List<string> MacroTestDependencies = ["Commands.Test1", "Commands.Test2"];
 
         Ioc.Resolve<App.ICommand>("IoC.Register", "Specs.Macro.Test", (object[] args) => MacroTestDependencies).Execute();
@@ -37,10 +39,6 @@ public class CreateMacroCommandStrategyTests
     [Fact]
     public void UnsuccessfulConstructionMacroCommand()
     {
-        new InitCommand().Execute();
-        var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
-        Ioc.Resolve<App.ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
-
         List<string> MacroTestDependencies = ["Commands.Test1", "Commands.Test2"];
 
         Ioc.Resolve<App.ICommand>("IoC.Register", "Specs.Macro.Test", (object[] args) => MacroTestDependencies).Execute();
