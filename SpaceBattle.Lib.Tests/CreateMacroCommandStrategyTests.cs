@@ -6,7 +6,8 @@ namespace SpaceBattle.Lib.Tests;
 
 public class CreateMacroCommandStrategyTests
 {
-    public CreateMacroCommandStrategyTests() {
+    public CreateMacroCommandStrategyTests()
+    {
         new InitCommand().Execute();
         var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
         Ioc.Resolve<App.ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
@@ -48,8 +49,8 @@ public class CreateMacroCommandStrategyTests
 
         var CreateMacro = new CreateMacroCommandStrategy("Macro.Test");
 
-        
-         Assert.Throws<Exception>(() => CreateMacro.Resolve(new object[0]));
+
+        Assert.Throws<Exception>(() => CreateMacro.Resolve(new object[0]));
 
     }
 }
