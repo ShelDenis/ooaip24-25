@@ -2,27 +2,29 @@ using App;
 
 namespace SpaceBattle.Lib;
 
-public class StartCommand: ICommand
+public class StartCommand : ICommand
 {
-    string name;
+    string action;
     object[] args;
     string key;
-    public StartCommand(string name, object[] args, string key)
+    public StartCommand(Dictionary<string, object> order)
     {
-        this.name = name;
-        this.args = args;
-        this.key = key;
+        this.action = (string)order["Action"];
+        this.args = (object[])order["Args"];
+        this.key = (string)order["Key"];
     }
 
     public void Execute()
     {
-        var mc = Ioc.Resolve<ICommand>("Macro." + name, args);
+        var mc = Ioc.Resolve<ICommand>("Macro." + action, args);
         var inj = Ioc.Resolve<ICommandInjectable>("Commands.CommandInjectable");
-        inj.Inject(mc);
         var q = Ioc.Resolve<ICommandReceiver>("Game.Queue");
-        var sendcmd = Ioc.Resolve<ICommand>("Commands.Send", q, inj);
+        var RepeatableMacro = new MCommand([mc, inj]);
+        var repeatcmd = Ioc.Resolve<ICommand>("Commands.Send", q, RepeatableMacro);
+        inj.Inject(repeatcmd);
+        var sendcmd = Ioc.Resolve<ICommand>("Commands.Send", q, repeatcmd);
         sendcmd.Execute();
-        var objs = Ioc.Resolve<IDictionary<string, IDictionary<string, object>>>("Game.Objects");
-        objs[key].Add(name, inj);
+        var objs = Ioc.Resolve<IDictionary<string,IDictionary<string,object>>>("Game.Objects");
+        objs[key].Add(action, inj);
     }
 }
