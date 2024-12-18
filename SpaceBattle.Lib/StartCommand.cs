@@ -17,11 +17,12 @@ public class StartCommand : ICommand
     public void Execute()
     {
         var mc = Ioc.Resolve<ICommand>("Macro." + action, args);
-        var inj = Ioc.Resolve<ICommandInjectable>("Commands.CommandInjectable");
+        var inj = Ioc.Resolve<ICommand>("Commands.CommandInjectable");
         var q = Ioc.Resolve<ICommandReceiver>("Game.Queue");
         var RepeatableMacro = new MCommand([mc, inj]);
         var repeatcmd = Ioc.Resolve<ICommand>("Commands.Send", q, RepeatableMacro);
-        inj.Inject(repeatcmd);
+        var inj_injectable = (ICommandInjectable)inj;
+        inj_injectable.Inject(repeatcmd);
         var sendcmd = Ioc.Resolve<ICommand>("Commands.Send", q, repeatcmd);
         sendcmd.Execute();
         var objs = Ioc.Resolve<IDictionary<string,IDictionary<string,object>>>("Game.Objects");
