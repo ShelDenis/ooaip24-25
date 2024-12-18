@@ -25,7 +25,7 @@ public class StartCommand : ICommand
         inj_injectable.Inject(repeatcmd);
         var sendcmd = Ioc.Resolve<ICommand>("Commands.Send", q, repeatcmd);
         sendcmd.Execute();
-        var objs = Ioc.Resolve<IDictionary<string,IDictionary<string,object>>>("Game.Objects");
+        var objs = Ioc.Resolve<IDictionary<string, IDictionary<string, object>>>("Game.Objects");
         objs[key].Add(action, inj);
     }
 }
