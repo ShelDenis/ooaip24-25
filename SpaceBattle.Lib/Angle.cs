@@ -26,10 +26,17 @@ public class Angle
         return new Angle(new_num, a1.Denominator);
     }
 
-    public double ToDouble()
+    // public double ToDouble()
+    // {
+    //     double n = numerator;
+    //     double d = denominator;
+    //     return n / d * Math.PI * 2;
+    // }
+
+    public static implicit operator double(Angle a)
     {
-        double n = numerator;
-        double d = denominator;
+        double n = a.Numerator;
+        double d = a.Denominator;
         return n / d * Math.PI * 2;
     }
 

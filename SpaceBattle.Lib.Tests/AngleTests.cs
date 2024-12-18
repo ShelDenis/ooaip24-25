@@ -88,10 +88,10 @@ public class AngleTests
     }
 
     [Fact]
-    public void Execute_ToDouble()
+    public void Execute_Sin()
     {
         Angle angle1 = new Angle(2, 8);
-        Assert.Equal(Math.PI / 2, angle1.ToDouble());
+        Assert.Equal(1, Math.Sin(angle1));
     }
 
 }
