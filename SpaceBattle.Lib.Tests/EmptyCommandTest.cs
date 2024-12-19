@@ -1,5 +1,5 @@
-﻿using Xunit;
-using Moq;
+﻿using Moq;
+using Xunit;
 namespace SpaceBattle.Lib.Tests;
 
 public class EmptyCommandTest

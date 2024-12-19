@@ -1,4 +1,4 @@
-namespace SpaceBattle.Lib;
+﻿namespace SpaceBattle.Lib;
 
 public class InjectableCommand : ICommand, ICommandInjectable
 {
@@ -6,7 +6,10 @@ public class InjectableCommand : ICommand, ICommandInjectable
     public void Execute()
     {
         if (_cmd.GetType() == typeof(EmptyCommand))
+        {
             throw new Exception("There is nothing to execute!");
+        }
+
         _cmd.Execute();
     }
     public void Inject(ICommand cmd)
