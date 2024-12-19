@@ -1,7 +1,7 @@
-using Xunit;
-using Moq;
-using App;
+﻿using App;
 using App.Scopes;
+using Moq;
+using Xunit;
 
 namespace SpaceBattle.Lib;
 
