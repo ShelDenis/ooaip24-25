@@ -1,17 +1,17 @@
-using App;
+﻿using App;
 
 namespace SpaceBattle.Lib;
 
 public class StartCommand : ICommand
 {
-    string action;
-    object[] args;
-    string key;
+    private readonly string action;
+    private readonly object[] args;
+    private readonly string key;
     public StartCommand(IDictionary<string, object> order)
     {
-        this.action = (string)order["Action"];
-        this.args = (object[])order["Args"];
-        this.key = (string)order["Key"];
+        action = (string)order["Action"];
+        args = (object[])order["Args"];
+        key = (string)order["Key"];
     }
 
     public void Execute()

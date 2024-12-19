@@ -1,9 +1,9 @@
-namespace SpaceBattle.Lib;
+﻿namespace SpaceBattle.Lib;
 
 public class SendCommand : ICommand
 {
-    ICommand cmd;
-    ICommandReceiver receiver;
+    private readonly ICommand cmd;
+    private readonly ICommandReceiver receiver;
     public SendCommand(ICommand cmd, ICommandReceiver receiver)
     {
         this.cmd = cmd;

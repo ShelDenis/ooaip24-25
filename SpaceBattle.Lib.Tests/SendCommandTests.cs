@@ -1,5 +1,5 @@
+﻿using Moq;
 using Xunit;
-using Moq;
 namespace SpaceBattle.Lib;
 
 public class SendCommandTests

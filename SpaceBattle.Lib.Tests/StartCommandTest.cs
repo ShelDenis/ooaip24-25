@@ -1,7 +1,6 @@
-using Xunit;
-using Moq;
-using App;
+﻿using App;
 using App.Scopes;
+using Xunit;
 namespace SpaceBattle.Lib;
 
 public class StartCommandTest
