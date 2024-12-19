@@ -1,7 +1,7 @@
 using App;
 namespace SpaceBattle.Lib;
 
-public class StopCommand: ICommand
+public class StopCommand : ICommand
 {
     private readonly string action;
     private readonly string key;
