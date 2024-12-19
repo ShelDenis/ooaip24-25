@@ -1,6 +1,5 @@
 using Xunit;
 using Moq;
-using System.Data;
 namespace SpaceBattle.Lib;
 
 public class SendCommandTests
