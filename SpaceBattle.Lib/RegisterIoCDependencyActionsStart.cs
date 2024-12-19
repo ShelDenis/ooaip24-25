@@ -6,9 +6,9 @@ public class RegisterIoCDependencyActionsStart : ICommand
     public void Execute()
     {
         Ioc.Resolve<App.ICommand>(
-            "Ioc.Register",
+            "IoC.Register",
             "Actions.Start",
-            (object[] order) => new StartCommand((Dictionary<string, object>)order[0])
+            (object[] order) => new StartCommand((IDictionary<string, object>)order[0])
         ).Execute();
     }
 }

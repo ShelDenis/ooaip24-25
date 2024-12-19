@@ -7,7 +7,7 @@ public class StartCommand : ICommand
     string action;
     object[] args;
     string key;
-    public StartCommand(Dictionary<string, object> order)
+    public StartCommand(IDictionary<string, object> order)
     {
         this.action = (string)order["Action"];
         this.args = (object[])order["Args"];
