@@ -7,13 +7,15 @@ namespace SpaceBattle.Lib;
 
 public class SendCommandRegisterTest
 {
-    [Fact]
-    public void ExecuteTest()
+    public SendCommandRegisterTest()
     {
         new InitCommand().Execute();
         var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
         Ioc.Resolve<App.ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
-
+    }
+    [Fact]
+    public void ExecuteTest()
+    {
         var mock_rec = new Mock<ICommandReceiver>();
         var mock_cmd = new Mock<ICommand>();
 
