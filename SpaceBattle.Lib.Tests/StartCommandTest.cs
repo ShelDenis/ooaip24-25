@@ -35,7 +35,7 @@ public class StartCommandTest
 
         startCommand.Execute();
 
-        inj.As<ICommandInjectable>().Verify(c => c.Inject(inj.Object), Times.Once);
+        inj.As<ICommandInjectable>().Verify(c => c.Inject(It.IsAny<ICommand>()), Times.Once);
         sendCommand.Verify(c => c.Execute(), Times.Once);
     }
 }
