@@ -1,6 +1,6 @@
-using Xunit;
-using App;
+﻿using App;
 using App.Scopes;
+using Xunit;
 namespace SpaceBattle.Lib;
 
 public class RegisterInjectableTests
@@ -12,8 +12,8 @@ public class RegisterInjectableTests
         var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
         Ioc.Resolve<App.ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
 
-        var register_inject = new RegisterDependencyCommandInjectableCommand();
-        register_inject.Execute();
+        var registerInject = new RegisterDependencyCommandInjectableCommand();
+        RegisterDependencyCommandInjectableCommand.Execute();
 
         var exception1 = Record.Exception(() => Ioc.Resolve<ICommand>("Commands.CommandInjectable"));
         var exception2 = Record.Exception(() => Ioc.Resolve<ICommandInjectable>("Commands.CommandInjectable"));

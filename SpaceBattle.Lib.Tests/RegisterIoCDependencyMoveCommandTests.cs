@@ -1,4 +1,4 @@
-using App;
+﻿using App;
 using App.Scopes;
 using Moq;
 using Xunit;
@@ -13,12 +13,12 @@ public class RegisterIoCDependencyMoveCommandTests
         var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
         Ioc.Resolve<App.ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
 
-        var mock_reg_move = new Mock<RegisterIoCDependencyMoveCommand>();
-        var reg_move = mock_reg_move.Object;
-        reg_move.Execute();
+        var mockRegisterMove = new Mock<RegisterIoCDependencyMoveCommand>();
+        var registerMove = mockRegisterMove.Object;
+        registerMove.Execute();
 
-        var mock_imoving = new Mock<IMoving>();
-        Ioc.Resolve<App.ICommand>("IoC.Register", "Adapters.IMovingObject", (object[] args) => mock_imoving.Object).Execute();
+        var mockImoving = new Mock<IMoving>();
+        Ioc.Resolve<App.ICommand>("IoC.Register", "Adapters.IMovingObject", (object[] args) => mockImoving.Object).Execute();
 
         var res = Ioc.Resolve<ICommand>("Commands.Move");
 

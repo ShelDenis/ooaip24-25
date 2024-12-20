@@ -1,4 +1,4 @@
-using App;
+﻿using App;
 using App.Scopes;
 using Moq;
 using Xunit;
@@ -48,7 +48,6 @@ public class CreateMacroCommandStrategyTests
         registerMc.Execute();
 
         var CreateMacro = new CreateMacroCommandStrategy("Macro.Test");
-
 
         Assert.Throws<Exception>(() => CreateMacro.Resolve(new object[0]));
 

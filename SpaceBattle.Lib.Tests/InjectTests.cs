@@ -8,16 +8,16 @@ public class InjectableCommandTests
     public void InjectableCommandTest()
     {
         var cmd = new Mock<ICommand>();
-        var inj_cmd = new InjectableCommand();
-        inj_cmd.Inject(cmd.Object);
-        inj_cmd.Execute();
+        var injectableCommand = new InjectableCommand();
+        injectableCommand.Inject(cmd.Object);
+        injectableCommand.Execute();
         cmd.Verify(x => x.Execute());
     }
 
     [Fact]
     public void CommandHaventInjected()
     {
-        var inj_cmd = new InjectableCommand();
-        Assert.Throws<Exception>(() => inj_cmd.Execute());
+        var injectableCommand = new InjectableCommand();
+        Assert.Throws<Exception>(() => injectableCommand.Execute());
     }
 }

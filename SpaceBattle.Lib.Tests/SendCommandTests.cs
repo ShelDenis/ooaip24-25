@@ -7,25 +7,25 @@ public class SendCommandTests
     [Fact]
     public void HasReceivedTest()
     {
-        var mock_rec = new Mock<ICommandReceiver>();
-        var mock_cmd = new Mock<ICommand>();
-        var sendcmd = new SendCommand(mock_cmd.Object, mock_rec.Object);
+        var mockReceiver = new Mock<ICommandReceiver>();
+        var mockCommand = new Mock<ICommand>();
+        var sendCommand = new SendCommand(mockCommand.Object, mockReceiver.Object);
 
-        sendcmd.Execute();
+        sendCommand.Execute();
 
-        mock_rec.Verify(r => r.Receive(mock_cmd.Object));
+        mockReceiver.Verify(r => r.Receive(mockCommand.Object));
     }
 
     [Fact]
     public void ReceiverDeniedTest()
     {
-        var mock_rec = new Mock<ICommandReceiver>();
-        var mock_cmd = new Mock<ICommand>();
+        var mockReceiver = new Mock<ICommandReceiver>();
+        var mockCommand = new Mock<ICommand>();
 
-        mock_rec.Setup(r => r.Receive(mock_cmd.Object)).Throws(new Exception());
+        mockReceiver.Setup(r => r.Receive(mockCommand.Object)).Throws(new Exception());
 
-        var sendcmd = new SendCommand(mock_cmd.Object, mock_rec.Object);
+        var sendCommand = new SendCommand(mockCommand.Object, mockReceiver.Object);
 
-        Assert.Throws<Exception>(() => sendcmd.Execute());
+        Assert.Throws<Exception>(() => sendCommand.Execute());
     }
 }

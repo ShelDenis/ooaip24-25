@@ -1,4 +1,4 @@
-using Xunit;
+﻿using Xunit;
 namespace SpaceBattle.Lib.Tests;
 
 public class AngleTests
@@ -93,5 +93,4 @@ public class AngleTests
         Angle angle1 = new Angle(4, 8);
         Assert.Equal(Math.PI, angle1.ToDouble());
     }
-
 }

@@ -1,9 +1,9 @@
-namespace SpaceBattle.Lib;
+﻿namespace SpaceBattle.Lib;
 
 public class Angle
 {
-    int numerator;
-    int denominator;
+    private readonly int numerator;
+    private readonly int denominator;
 
     public Angle(int n, int d)
     {
@@ -11,15 +11,9 @@ public class Angle
         denominator = d;
     }
 
-    public int Numerator
-    {
-        get => numerator % denominator;
-    }
+    public int Numerator => numerator % denominator;
 
-    public int Denominator
-    {
-        get => denominator;
-    }
+    public int Denominator => denominator;
 
     public static Angle operator +(Angle a1, Angle a2)
     {

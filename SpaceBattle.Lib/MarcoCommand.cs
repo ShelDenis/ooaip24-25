@@ -10,8 +10,8 @@ public class MCommand : ICommand
 
     public void Execute()
     {
-        List<ICommand> ic_list = new List<ICommand>();
-        ic_list = cmds.ToList<ICommand>();
-        ic_list.ForEach(c => c.Execute());
+        List<ICommand> iCommandList = new List<ICommand>();
+        iCommandList = cmds.ToList<ICommand>();
+        iCommandList.ForEach(c => c.Execute());
     }
 }

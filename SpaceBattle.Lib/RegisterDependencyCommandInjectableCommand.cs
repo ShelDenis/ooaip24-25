@@ -1,9 +1,9 @@
-using App;
+﻿using App;
 namespace SpaceBattle.Lib;
 
 public class RegisterDependencyCommandInjectableCommand
 {
-    public void Execute()
+    public static void Execute()
     {
         Ioc.Resolve<App.ICommand>(
             "IoC.Register",

@@ -20,11 +20,11 @@ public class StartCommand : ICommand
         var inj = Ioc.Resolve<ICommand>("Commands.CommandInjectable");
         var q = Ioc.Resolve<ICommandReceiver>("Game.Queue");
         var RepeatableMacro = Ioc.Resolve<ICommand>("Commands.Macro", (ICommand[])[mc, inj]);
-        var repeatcmd = Ioc.Resolve<ICommand>("Commands.Send", q, RepeatableMacro);
-        var inj_injectable = (ICommandInjectable)inj;
-        inj_injectable.Inject(repeatcmd);
-        var sendcmd = Ioc.Resolve<ICommand>("Commands.Send", q, repeatcmd);
-        sendcmd.Execute();
+        var repeatCommand = Ioc.Resolve<ICommand>("Commands.Send", q, RepeatableMacro);
+        var injInjectable = (ICommandInjectable)inj;
+        injInjectable.Inject(repeatCommand);
+        var sendCommand = Ioc.Resolve<ICommand>("Commands.Send", q, repeatCommand);
+        sendCommand.Execute();
         var obj = Ioc.Resolve<IDictionary<string, object>>("Game.Object", key);
         obj.Add(action, inj);
     }

@@ -1,5 +1,4 @@
-using App;
-using App.Scopes;
+﻿using App;
 namespace SpaceBattle.Lib;
 
 public class CreateMacroCommandStrategy(string commandSpec)
@@ -8,7 +7,7 @@ public class CreateMacroCommandStrategy(string commandSpec)
     {
         var commands = Ioc.Resolve<IEnumerable<string>>("Specs." + commandSpec);
 
-        var add_commands = commands.Select(p => Ioc.Resolve<ICommand>(p, args)).ToArray<ICommand>();
-        return Ioc.Resolve<ICommand>("Commands.Macro", add_commands);
+        var addCommands = commands.Select(p => Ioc.Resolve<ICommand>(p, args)).ToArray<ICommand>();
+        return Ioc.Resolve<ICommand>("Commands.Macro", addCommands);
     }
 }

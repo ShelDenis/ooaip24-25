@@ -14,15 +14,15 @@ public class SendCommandRegisterTest
         var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
         Ioc.Resolve<App.ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
 
-        var mock_rec = new Mock<ICommandReceiver>();
-        var mock_cmd = new Mock<ICommand>();
+        var mockReceiver = new Mock<ICommandReceiver>();
+        var mockCommand = new Mock<ICommand>();
 
         var registerSend = new RegisterIoCDependencySendCommand();
         registerSend.Execute();
 
-        var sendcom = Ioc.Resolve<ICommand>("Commands.Send", mock_cmd.Object, mock_rec.Object);
+        var sendCommand = Ioc.Resolve<ICommand>("Commands.Send", mockCommand.Object, mockReceiver.Object);
 
-        Assert.IsType<SendCommand>(sendcom);
+        Assert.IsType<SendCommand>(sendCommand);
 
     }
 }
