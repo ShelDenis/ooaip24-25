@@ -12,7 +12,8 @@ public class StopCommand : ICommand
     }
     public void Execute()
     {
-        var inj = Ioc.Resolve<ICommandInjectable>("Commands.CommandInjectable", key, action);
+        var gameObject = Ioc.Resolve<IDictionary<string, object>>("Game.Object", key);
+        var inj = (ICommandInjectable)gameObject[action];
         var empty = Ioc.Resolve<ICommand>("Commands.Empty");
 
         inj.Inject(empty);
