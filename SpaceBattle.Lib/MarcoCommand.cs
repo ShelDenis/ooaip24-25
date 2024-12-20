@@ -2,7 +2,7 @@
 
 public class MCommand : ICommand
 {
-    ICommand[] cmds;
+    private readonly ICommand[] cmds;
     public MCommand(ICommand[] cmds)
     {
         this.cmds = cmds;
