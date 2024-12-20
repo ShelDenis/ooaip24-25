@@ -19,7 +19,7 @@ public class StartCommand : ICommand
         var mc = Ioc.Resolve<ICommand>("Macro." + action, args);
         var inj = Ioc.Resolve<ICommand>("Commands.CommandInjectable");
         var q = Ioc.Resolve<ICommandReceiver>("Game.Queue");
-        var RepeatableMacro = Ioc.Resolve<ICommandReceiver>("Commands.Macro", [mc, inj]);
+        var RepeatableMacro = Ioc.Resolve<ICommand>("Commands.Macro", (ICommand[])[mc, inj]);
         var repeatcmd = Ioc.Resolve<ICommand>("Commands.Send", q, RepeatableMacro);
         var inj_injectable = (ICommandInjectable)inj;
         inj_injectable.Inject(repeatcmd);
